@@ -42,5 +42,10 @@ int pop_min_dist(vector<int>&, const int *);
 int minKey(int[], bool[], int);
 void printMST(int parent[], int **graph, int numv);
 
+void insert(int argc, char **argv, Graph graph);
+void remove(char **argv, Graph graph);
+void is_complete(Graph graph);
+void complete(Graph graph);
+void bfsearch(char **argv, Graph graph);
 
 #endif /* GRAPH_H */
