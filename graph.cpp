@@ -373,3 +373,99 @@ void Graph::primMST()
 
     printMST(parent, matAdj, num_v);
 }
+
+void insert(int argc, char **argv, Graph graph)
+{
+    int v1 = atoi(argv[3]);
+    int v2 = atoi(argv[4]);
+
+    Edge edge;
+    if(argc > 5)
+    {
+        int w = atoi(argv[5]);
+        Edge edg(v1,v2,w);
+        edge = edg;
+    }
+    else
+    {
+        Edge edg(v1,v2);
+        edge = edg;
+    }
+
+    bool ins = graph.insert(edge);
+
+    if(ins)
+    {
+        cout << endl;
+        cout << ">> Inserida aresta (" << v1 << ", " << v2 << ")";
+        cout << endl << endl;
+    }
+    else
+    {
+        cout << endl;
+        cout << ">> Falha ao inserir aresta (" << v1 << ", " << v2 << ")";
+        cout << endl << endl;
+    }
+    graph.print();
+}
+
+void remove(char **argv, Graph graph)
+{
+    int v1 = atoi(argv[3]);
+    int v2 = atoi(argv[4]);
+    Edge edge(v1,v2);
+    bool ins = graph.remove(edge);
+    if(ins)
+    {
+        cout << endl;
+        cout << ">> Removida aresta (" << v1 << ", " << v2 << ")";
+        cout << endl << endl;
+    }
+    else
+    {
+        cout << endl;
+        cout << ">> Falha ao remover aresta (" << v1 << ", " << v2 << ")";
+        cout << endl << endl;
+    }
+    graph.print();
+}
+
+void is_complete(Graph graph)
+{
+    bool ins = graph.isComplete();
+    if(ins)
+    {
+        cout << endl;
+        cout << ">> Grafo é completo";
+        cout << endl << endl;
+    }
+    else
+    {
+        cout << endl;
+        cout << ">> Grafo não é completo";
+        cout << endl << endl;
+    }
+}
+
+void complete(Graph graph)
+{
+    cout << endl;
+    cout << ">> Grafo completado" << endl;
+    cout << endl;
+    graph.complete();
+    graph.print();
+}
+
+void bfsearch(char **argv, Graph graph)
+{
+    int vertex = atoi(argv[3]);
+    cout << endl;
+    cout << ">> Busca em largura partindo do vértice " << vertex;
+    cout << endl;
+    vector<int> bfs_array = graph.BFSearch(vertex);
+    cout << ">> ";
+    for(int i=0; i<graph.numVertex(); i++){
+        cout << bfs_array[i] << " ";
+    }
+    cout << endl;
+}
